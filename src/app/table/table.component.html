@@ -19,36 +19,41 @@
         </tbody>
       </table>
     </div>
+
   
-    <form *ngIf="formVisible === 'form'" #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)" novalidate>
+    <form *ngIf="formVisible === 'form' " #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)" novalidate>
 
       <div class="formField">
         <label for="EName">Name</label>
-        <input type="text" name="EName" ngModel required />
+        <input type="text" name="EName" [(ngModel)]="employee.name" required />
       </div>
+
       <div class="formField">
         <label for="EDesignation">Designation</label>
-        <input type="text" name="EDesignation" ngModel required />
+        <input type="text" name="EDesignation" [(ngModel)]="employee.designation" required />
       </div>
+
       <div class="formField">
         <label for="EExperience">Experience</label>
-        <input type="text" name="EExperience" ngModel required />
+        <input type="text" name="EExperience" [(ngModel)]="employee.experience" required />
       </div>
+
       <div class="formField">
         <label for="EGender">Gender</label>
-        <mat-radio-group name="EGender" ngModel required>
+        <mat-radio-group name="EGender" [(ngModel)]="employee.gender" required>
           <mat-radio-button value="Male">Male</mat-radio-button>
           <mat-radio-button value="Female">Female</mat-radio-button>
         </mat-radio-group>
       </div>
+
       <div class="formField">
         <label for="EType">Job Type</label>
-        <mat-select name="EType" ngModel required>
+        <mat-select name="EType" [(ngModel)]="employee.jobType" required>
           <mat-option *ngFor="let item of etypes" [value]="item">{{ item }}</mat-option>
         </mat-select>
       </div>
   
-      <button> Add Employee</button>
+      <button mat-raised-button color="accent"> Add Employee</button>
     </form>
   
 

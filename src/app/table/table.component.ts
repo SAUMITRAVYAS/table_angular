@@ -43,6 +43,14 @@ export class TableComponent implements OnInit {
     "Intern", "Full-time", "Student", "External"
   ];
 
+  employee:IEmployee = {
+    name: "Lalit",
+      designation: "Data Engineer",
+      experience: "2 Year",
+      gender: "Male",
+      jobType: "Intern"
+  }
+
   formVisible: string = "grid";
   selectedEmployeeIndex: number | null = null;
   selectedEmployee: IEmployee = {
@@ -92,28 +100,8 @@ export class TableComponent implements OnInit {
   }
 
   onSubmit(formData: NgForm) {
-    if (formData.valid) {
-      console.log(formData);
-      const values = formData.value;
-      const emp: IEmployee = {
-        name: values.EName,
-        designation: values.EDesignation,
-        experience: values.EExperience,
-        gender: values.EGender,
-        jobType: values.EType
-      }
-
-      if (this.formAction === "Add Employee") {
-        this.employees.push(emp);
-      } else if (this.formAction === "Update Employee" && this.selectedEmployeeIndex !== null) {
-        
-        this.employees.splice(this.selectedEmployeeIndex, 1, emp);
-      }
-
-      // sessionStorage.setItem("empdata", JSON.stringify(this.employees));
-      formData.resetForm();
-      this.cancelEdit();
-    }
+    this.employees.push(this.employee);
+   
   }
 
   trackByFn(index: number, item: IEmployee) {
