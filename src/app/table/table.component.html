@@ -1,0 +1,58 @@
+<div class="tableComponent">
+    <div class="mytable">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Experience</th>
+            <th>Gender</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of employees; let i = index; trackBy: trackByFn" (click)="editEmployee(item, i)">
+            <td>{{ item.name }}</td>
+            <td>{{ item.designation }}</td>
+            <td>{{ item.experience }}</td>
+            <td>{{ item.gender }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <form *ngIf="formVisible === 'form'" #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)" novalidate>
+
+      <div class="formField">
+        <label for="EName">Name</label>
+        <input type="text" name="EName" ngModel required />
+      </div>
+      <div class="formField">
+        <label for="EDesignation">Designation</label>
+        <input type="text" name="EDesignation" ngModel required />
+      </div>
+      <div class="formField">
+        <label for="EExperience">Experience</label>
+        <input type="text" name="EExperience" ngModel required />
+      </div>
+      <div class="formField">
+        <label for="EGender">Gender</label>
+        <mat-radio-group name="EGender" ngModel required>
+          <mat-radio-button value="Male">Male</mat-radio-button>
+          <mat-radio-button value="Female">Female</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="formField">
+        <label for="EType">Job Type</label>
+        <mat-select name="EType" ngModel required>
+          <mat-option *ngFor="let item of etypes" [value]="item">{{ item }}</mat-option>
+        </mat-select>
+      </div>
+  
+      <button> Add Employee</button>
+    </form>
+  
+
+    <button class="addBtn" (click)="toggleForm()">{{ formVisible === 'grid' ? 'Add Employee' : 'Back to Grid' }}</button>
+  
+  </div>
+  

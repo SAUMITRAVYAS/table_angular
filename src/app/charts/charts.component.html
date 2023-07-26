@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="chart-container">
+      <h2 class="heading">Company Profits</h2>
+      <div class="chart-type">
+        <label for="chartType">Select Chart Type:</label>
+        <select id="chartType" [(ngModel)]="selectedChartType" (change)="onChartTypeChange()">
+          <option *ngFor="let type of chartTypes" [value]="type.value">{{ type.label }}</option>
+        </select>
+      </div>
+      <div class="chart" [ngStyle]="{ 'min-height': selectedChartType === 'pie' ? '300px' : '400px' }">
+        <div id="chart"></div> <!-- Change [attr.id] to id -->
+      </div>
+    </div>
+  </div>
+  
